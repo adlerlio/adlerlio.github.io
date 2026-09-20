@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qcon全球软件开发大会-汇聚全球技术智慧与未来趋势</title>
+    <meta name="description" content="qcon全球软件开发大会官网，专注于云计算、大数据、微服务、架构设计等前沿技术。提供大会日程、演讲嘉宾、技术专题及全球站会信息，是技术管理者与架构师的必参盛会。">
+    <meta name="keywords" content="qcon全球软件开发大会, QCon, 技术大会, 架构师大会, 云计算, 微服务, 大数据, 开发者社区">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary-color: #f8fafc;
+            --text-main: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --accent-color: #0ea5e9;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --header-height: 70px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: #fff;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2.25rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Header */
+        header {
+            height: var(--header-height);
+            background: #fff;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Topics Section */
+        .topics {
+            padding: 80px 0;
+            background: #fff;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .topic-card {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .topic-card:hover {
+            box-shadow: var(--card-shadow);
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .topic-icon {
+            width: 50px;
+            height: 50px;
+            background: #eff6ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .topic-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .topic-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Agenda Section */
+        .agenda {
+            padding: 80px 0;
+            background: var(--secondary-color);
+        }
+
+        .agenda-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .agenda-item {
+            background: #fff;
+            border-radius: 8px;
+            padding: 25px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .time {
+            font-weight: 700;
+            color: var(--primary-color);
+            min-width: 100px;
+            font-size: 1.1rem;
+        }
+
+        .agenda-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .agenda-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 10px;
+            background: #f1f5f9;
+            color: var(--text-secondary);
+        }
+
+        /* Speakers Section */
+        .speakers {
+            padding: 80px 0;
+        }
+
+        .speaker-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .speaker-card {
+            text-align: center;
+        }
+
+        .speaker-img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            background: #e2e8f0;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 3rem;
+        }
+
+        .speaker-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .speaker-company {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: var(--text-main);
+            color: #fff;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            color: #94a3b8;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 60px 0 20px;
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1e293b;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .agenda-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .time {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <span>QCon</span> 全球软件开发大会
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#topics" class="active">技术专题</a></li>
+                    <li><a href="#agenda">大会日程</a></li>
+                    <li><a href="#speakers">演讲嘉宾</a></li>
+                    <li><a href="#about">关于大会</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn btn-primary">立即购票</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>连接全球技术智慧<br>探索未来架构之路</h1>
+                <p>汇聚来自全球顶尖互联网企业的架构师、技术负责人与资深开发者，深度探讨云计算、微服务、云原生及人工智能等前沿技术趋势。</p>
+                <div style="margin-bottom: 30px;">
+                    <a href="#agenda" class="btn btn-primary">查看日程安排</a>
+                    <a href="#topics" class="btn btn-outline" style="margin-left: 10px;">了解技术主题</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>20+</h3>
+                        <p>年行业积淀</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>50+</h3>
+                        <p>顶尖演讲嘉宾</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>3000+</h3>
+                        <p>参会技术精英</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Topics Section -->
+        <section id="topics" class="topics">
+            <div class="container">
+                <div class="section-title">
+                    <h2>前沿技术专题</h2>
+                    <p>覆盖云原生、大数据、架构设计、安全合规等核心领域，为技术决策提供实战指南</p>
+                </div>
+                <div class="topic-grid">
+                    <article class="topic-card">
+                        <div class="topic-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </div>
+                        <h3>云原生与微服务</h3>
+                        <p>深入探讨 Kubernetes 容器编排、Service Mesh 服务网格、Serverless 架构演进与实践经验。</p>
+                    </article>
+                    <article class="topic-card">
+                        <div class="topic-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
+                        </div>
+                        <h3>数据中台与大数据</h3>
+                        <p>海量数据处理架构、实时计算引擎、数据治理体系构建，以及数据驱动业务增长的最佳实践。</p>
+                    </article>
+                    <article class="topic-card">
+                        <div class="topic-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        </div>
+                        <h3>安全与合规</h3>
+                        <p>DevSecOps 实践、云安全防护、隐私计算技术，以及应对日益复杂的安全挑战的策略。</p>
+                    </article>
+                    <article class="topic-card">
+                        <div class="topic-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        </div>
+                        <h3>分布式架构</h3>
+                        <p>高并发系统设计、分布式事务处理、系统稳定性保障与故障演练方法论。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Agenda Section -->
+        <section id="agenda" class="agenda">
+            <div class="container">
+                <div class="section-title">
+                    <h2>核心日程概览</h2>
+                    <p>精选干货主题，涵盖架构设计、技术选型、运维实战等关键议题</p>
+                </div>
+                <div class="agenda-list">
+                    <div class="agenda-item">
+                        <div class="time">09:00 - 10:00</div>
+                        <div class="agenda-content">
+                            <h3>构建下一代云原生应用体系 <span class="tag">架构设计</span></h3>
+                            <p>基于 Kubernetes 的企业级应用落地与最佳实践分享</p>
+                        </div>
+                    </div>
+                    <div class="agenda-item">
+                        <div class="time">10:30 - 11:30</div>
+                        <div class="agenda-content">
+                            <h3>海量数据下的实时计算与治理 <span class="tag">大数据</span></h3>
+                            <p>如何利用 Flink 与 Spark 构建高性能实时数据管道</p>
+                        </div>
+                    </div>
+                    <div class="agenda-item">
+                        <div class="time">13:30 - 14:30</div>
+                        <div class="agenda-content">
+                            <h3>Service Mesh 在大型微服务架构中的挑战与解法 <span class="tag">微服务</span></h3>
+                            <p>Istio 在复杂业务场景下的性能调优与治理经验</p>
+                        </div>
+                    </div>
+                    <div class="agenda-item">
+                        <div class="time">14:45 - 15:45</div>
+                        <div class="agenda-content">
+                            <h3>AI 辅助编程与研发效能提升 <span class="tag">AI技术</span></h3>
+                            <p>大模型技术在代码生成、测试与自动化运维中的应用</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Speakers Section -->
+        <section id="speakers" class="speakers">
+            <div class="container">
+                <div class="section-title">
+                    <h2>特邀演讲嘉宾</h2>
+                    <p>来自阿里巴巴、腾讯、华为、字节跳动等知名企业的技术领袖</p>
+                </div>
+                <div class="speaker-grid">
+                    <div class="speaker-card">
+                        <div class="speaker-img">张</div>
+                        <div class="speaker-name">张伟</div>
+                        <div class="speaker-company">阿里云技术专家</div>
+                    </div>
+                    <div class="speaker-card">
+                        <div class="speaker-img">李</div>
+                        <div class="speaker-name">李明</div>
+                        <div class="speaker-company">腾讯云架构师</div>
+                    </div>
+                    <div class="speaker-card">
+                        <div class="speaker-img">王</div>
+                        <div class="speaker-name">王强</div>
+                        <div class="speaker-company">华为云首席专家</div>
+                    </div>
+                    <div class="speaker-card">
+                        <div class="speaker-img">陈</div>
+                        <div class="speaker-name">陈静</div>
+                        <div class="speaker-company">字节跳动技术总监</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>加入 QCon，与全球技术同行交流</h2>
+                <p>席位有限，提前锁定您的参会资格，获取最新技术动态与交流机会。</p>
+                <button class="btn btn-primary" onclick="alert('感谢您的兴趣！请访问官网进行报名。')">立即报名参会</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>QCon 全球软件开发大会</h3>
+                    <p>面向软件开发者的顶级技术大会。我们致力于分享全球顶尖技术实践，推动技术社区的发展与创新。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>关于大会</h4>
+                    <ul>
+                        <li><a href="#">大会介绍</a></li>
+                        <li><a href="#">往届回顾</a></li>
+                        <li><a href="#">演讲嘉宾</a></li>
+                        <li><a href="#">合作媒体</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>热门专题</h4>
+                    <ul>
+                        <li><a href="#">云原生</a></li>
+                        <li><a href="#">微服务架构</a></li>
+                        <li><a href="#">数据智能</a></li>
+                        <li><a href="#">AI与算法</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li><a href="#">邮箱：info@qcon.com</a></li>
+                        <li><a href="#">电话：400-888-XXXX</a></li>
+                        <li><a href="#">地址：北京市朝阳区科技园区</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 QCon Global Software Development Conference. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
