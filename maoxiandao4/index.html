@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="冒险岛4转攻略：详解四转职业推荐、技能加点、装备选择及四转副本通关指南，助你快速突破转职瓶颈。">
+    <meta name="keywords" content="冒险岛4转, 冒险岛四转攻略, 冒险岛职业推荐, 冒险岛技能加点, 冒险岛装备">
+    <title>冒险岛4转-四转职业推荐与全攻略指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff9900;
+            --secondary-color: #1e3c72;
+            --accent-color: #ff4b1f;
+            --text-main: #333333;
+            --text-light: #666666;
+            --bg-body: #f4f6f9;
+            --bg-card: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0,0,0,0.05);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .cta-button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #e68a00;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #2a5298 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-tag {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Main Content */
+        main {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+        }
+
+        /* Job Cards */
+        .job-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .job-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid transparent;
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .job-card.warrior { border-top-color: #d32f2f; }
+        .job-card.mage { border-top-color: #7b1fa2; }
+        .job-card.archer { border-top-color: #388e3c; }
+        .job-card.thief { border-top-color: #f57c00; }
+        .job-card.pirate { border-top-color: #1976d2; }
+
+        .job-img-placeholder {
+            height: 180px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 40px;
+        }
+
+        .job-content {
+            padding: 25px;
+        }
+
+        .job-content h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .job-content p {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .job-stats {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .stat-badge {
+            font-size: 12px;
+            padding: 3px 8px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            color: #555;
+        }
+
+        .job-link {
+            display: inline-block;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .job-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Guide Section */
+        .guide-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .guide-article {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .guide-article h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            border-left: 5px solid var(--primary-color);
+            padding-left: 15px;
+        }
+
+        .guide-content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .guide-content ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .guide-content li {
+            margin-bottom: 8px;
+        }
+
+        /* Sidebar */
+        aside {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            height: fit-content;
+        }
+
+        .sidebar-block {
+            margin-bottom: 30px;
+        }
+
+        .sidebar-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .sidebar-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .checklist li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .checklist li::before {
+            content: '✓';
+            color: var(--primary-color);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* FAQ */
+        .faq-section {
+            background: white;
+            padding: 60px 0;
+            margin-top: 40px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+
+        .faq-question {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--secondary-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .faq-answer {
+            margin-top: 15px;
+            color: var(--text-light);
+            font-size: 15px;
+            display: none;
+            padding-left: 10px;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        .faq-item.active .faq-question::before {
+            content: '+';
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            margin: 0 15px;
+            color: #bdc3c7;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: #7f8c8d;
+            border-top: 1px solid #34495e;
+            padding-top: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .guide-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-wrapper {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <span>★</span> 冒险岛4转攻略
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#jobs" class="active">职业推荐</a></li>
+                    <li><a href="#guide">加点指南</a></li>
+                    <li><a href="#equipment">装备选择</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+            <a href="#guide" class="cta-button">查看攻略</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>突破四转瓶颈，成就传说之路</h1>
+            <p>无论你是力战士、魔导士还是射手，四转都是冒险岛职业生涯的重要里程碑。掌握正确的技能加点、装备搭配与副本策略，让你的角色战力飙升。</p>
+            <div class="hero-tags">
+                <span class="hero-tag">四转职业</span>
+                <span class="hero-tag">技能加点</span>
+                <span class="hero-tag">装备推荐</span>
+                <span class="hero-tag">副本攻略</span>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- 职业推荐部分 -->
+        <section id="jobs">
+            <div class="section-title">
+                <h2>四转职业全解析</h2>
+                <p>根据你的游戏风格选择最适合的四转分支</p>
+            </div>
+
+            <div class="job-grid">
+                <!-- 战士 -->
+                <article class="job-card warrior">
+                    <div class="job-img-placeholder">
+                        <span>⚔️</span>
+                    </div>
+                    <div class="job-content">
+                        <h3>战士四转 <span style="font-size:14px; font-weight:normal; color:#999;">Balrog</span></h3>
+                        <p>四转战士主要分为狂战士与圣骑士。狂战士以高额的瞬间爆发伤害著称，适合追求极致输出的玩家；圣骑士则拥有强大的生存能力和Buff技能，是团队中的中流砥柱。</p>
+                        <div class="job-stats">
+                            <span class="stat-badge">高爆发</span>
+                            <span class="stat-badge">高生存</span>
+                            <span class="stat-badge">近战输出</span>
+                        </div>
+                        <a href="#" class="job-link">查看详细加点 →</a>
+                    </div>
+                </article>
+
+                <!-- 魔法师 -->
+                <article class="job-card mage">
+                    <div class="job-img-placeholder">
+                        <span>🔮</span>
+                    </div>
+                    <div class="job-content">
+                        <h3>法师四转 <span style="font-size:14px; font-weight:normal; color:#999;">Archmage</span></h3>
+                        <p>四转法师拥有雷神、炎术士与冰雷师三种形态。炎术士的火焰伤害不可小觑，冰雷师拥有强大的控场与范围攻击能力，而雷神则兼具高攻速与雷电特效，是刷图的佼佼者。</p>
+                        <div class="job-stats">
+                            <span class="stat-badge">范围攻击</span>
+                            <span class="stat-badge">控场能力</span>
+                            <span class="stat-badge">元素魔法</span>
+                        </div>
+                        <a href="#" class="job-link">查看详细加点 →</a>
+                    </div>
+                </article>
+
+                <!-- 弓箭手 -->
+                <article class="job-card archer">
+                    <div class="job-img-placeholder">
+                        <span>🏹</span>
+                    </div>
+                    <div class="job-content">
+                        <h3>弓箭手四转 <span style="font-size:14px; font-weight:normal; color:#999;">Wild Hunter</span></h3>
+                        <p>四转弓箭手分为箭神与神射手。箭神拥有强大的召唤兽技能与范围射击，适合在复杂地形作战；神射手则更侧重于单体精准打击与机动性，是高难度副本的利器。</p>
+                        <div class="job-stats">
+                            <span class="stat-badge">远程输出</span>
+                            <span class="stat-badge">召唤兽</span>
+                            <span class="stat-badge">高机动</span>
+                        </div>
+                        <a href="#" class="job-link">查看详细加点 →</a>
+                    </div>
+                </article>
+
+                <!-- 盗贼 -->
+                <article class="job-card thief">
+                    <div class="job-img-placeholder">
+                        <span>🗡️</span>
+                    </div>
+                    <div class="job-content">
+                        <h3>盗贼四转 <span style="font-size:14px; font-weight:normal; color:#999;">Night Lord</span></h3>
+                        <p>四转盗贼分为暗影双刀与幻影刺客。暗影双刀以标志性的“千影”技能和多重箭矢著称，是追求华丽连击的首选；幻影刺客则能复制敌人技能，策略性极强。</p>
+                        <div class="job-stats">
+                            <span class="stat-badge">连击流</span>
+                            <span class="stat-badge">高暴击</span>
+                            <span class="stat-badge">技能复制</span>
+                        </div>
+                        <a href="#" class="job-link">查看详细加点 →</a>
+                    </div>
+                </article>
+
+                <!-- 海盗 -->
+                <article class="job-card pirate">
+                    <div class="job-img-placeholder">
+                        <span>🦜</span>
+                    </div>
+                    <div class="job-content">
+                        <h3>海盗四转 <span style="font-size:14px; font-weight:normal; color:#999;">Cannoneer</span></h3>
+                        <p>四转海盗分为重炮手与枪神。重炮手能召唤巨型火炮进行轰炸，拥有极强的AOE伤害；枪神则追求极致的攻速与精准度，是近战法师般的存在。</p>
+                        <div class="job-stats">
+                            <span class="stat-badge">巨型火炮</span>
+                            <span class="stat-badge">攻速极快</span>
+                            <span class="stat-badge">近战法师</span>
+                        </div>
+                        <a href="#" class="job-link">查看详细加点 →</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 核心攻略内容 -->
+        <section id="guide">
+            <div class="section-title">
+                <h2>四转核心指南</h2>
+                <p>从三转到四转的进阶之路</p>
+            </div>
+
+            <div class="guide-layout">
+                <div class="guide-main">
+                    <article class="guide-article">
+                        <h3>1. 技能加点策略</h3>
+                        <div class="guide-content">
+                            <p>进入四转后，技能点将变得非常珍贵。玩家需要根据职业特性，在核心输出技能与功能性辅助技能之间做出取舍。</p>
+                            <p><strong>核心输出技能：</strong> 每个职业的四转核心技能（如狂战士的“黑龙波”、魔法的“末日审判”）必须优先点满，这是你伤害的主要来源。</p>
+                            <p><strong>功能性技能：</strong> 不要忽视诸如“自动攻击”、“防御提升”或“范围扩大”的技能。例如，重炮手的自动攻击和神射手的射程提升，能显著提升刷怪效率。</p>
+                            <p><strong>属性点分配：</strong> 四转后，属性点应优先提升力量/智力/敏捷/运气以增加基础攻击力，同时适当分配点数给耐力以提升生存能力。</p>
+                        </div>
+                    </article>
+
+                    <article class="guide-article">
+                        <h3>2. 装备选择与强化</h3>
+                        <div class="guide-content">
+                            <p>四转装备通常分为“过渡期”和“成型期”。在完成四转任务后，建议优先获取四转专属武器和防具。</p>
+                            <ul>
+                                <li><strong>武器选择：</strong> 寻找带有“四转技能伤害”或“攻击力”属性的装备。不同职业对属性的需求不同，例如魔法师需要智力，战士需要力量。</li>
+                                <li><strong>首饰与披风：</strong> 装备附魔是关键。优先选择增加攻击力、暴击率、技能冷却缩减或伤害增幅的附魔。</li>
+                                <li><strong>强化等级：</strong> 建议将主武器强化至 +15 或 +20，这是提升战斗力的最有效途径。注意使用强化保护券降低失败风险。</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="guide-article">
+                        <h3>3. 副本与练级建议</h3>
+                        <div class="guide-content">
+                            <p>四转后，传统的练级地图效率会下降。建议前往“神木林”、“天空之城”或“神殿”等高等级副本。</p>
+                            <p><strong>组队推荐：</strong> 四转职业多为远程或召唤类，适合在“神殿”进行组队打怪。寻找拥有强力Buff（如勇气祝福、力量祝福）的队友，可以事半功倍。</p>
+                            <p><strong>技能连招：</strong> 在面对精英怪时，合理使用“无敌技能”或“闪避技能”可以保证生存。例如，盗贼的四转技能通常带有无敌帧，是刷图神技。</p>
+                        </div>
+                    </article>
+                </div>
+
+                <aside class="sidebar">
+                    <div class="sidebar-block">
+                        <h4 class="sidebar-title">四转准备清单</h4>
+                        <ul class="checklist">
+                            <li>确保等级达到200级</li>
+                            <li>完成三转后的转职任务</li>
+                            <li>准备充足的MP药水</li>
+                            <li>拥有基础的四转装备</li>
+                            <li>加入活跃的公会</li>
+                            <li>了解四转技能的冷却时间</li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-block">
+                        <h4 class="sidebar-title">热门四转副本</h4>
+                        <ul class="checklist">
+                            <li>神殿 - 高级经验获取</li>
+                            <li>天空之城 - 稀有材料掉落</li>
+                            <li>神木林 - 专属四转任务</li>
+                            <li>黑龙巢穴 - 狂战士专属</li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- FAQ 常见问题 -->
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>常见问题解答</h2>
+                </div>
+                
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">四转需要多少点技能？</div>
+                        <div class="faq-answer">
+                            每个职业在四转时需要消耗特定的技能点（通常在40点以上）来学习核心四转技能。剩余的技能点可以自由分配给前置技能或功能性技能。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">哪个四转职业最赚钱？</div>
+                        <div class="faq-answer">
+                            这取决于服务器环境和当前版本。通常来说，拥有强大AOE（范围攻击）能力的职业（如炎术士、重炮手）在刷材料和打BOSS时效率更高，赚钱能力更强。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">四转后练级快还是慢？</div>
+                        <div class="faq-answer">
+                            四转后，虽然地图难度增加，但四转技能的强力效果通常能弥补这一点。只要装备成型，四转后的练级速度往往比三转末期更快。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">幻影刺客和暗影双刀哪个好？</div>
+                        <div class="faq-answer">
+                            暗影双刀爆发高，操作简单，适合喜欢华丽连击的玩家；幻影刺客技能复制机制使其在特定副本中策略性强，适合喜欢多样化技能组合的玩家。两者在后期差距不大，主要看个人喜好。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">关于我们</a>
+                <a href="#">游戏资料库</a>
+                <a href="#">职业排行榜</a>
+                <a href="#">联系客服</a>
+            </div>
+            <p class="copyright">本站为玩家攻略分享平台，所有游戏内容版权归 Nexon Korea 及其授权方所有。</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ 交互逻辑
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                item.querySelector('.faq-question').addEventListener('click', function() {
+                    // 关闭其他已打开的项
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // 切换当前项
+                    item.classList.toggle('active');
+                });
+            });
+
+            // 简单的平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+                                 </html>
