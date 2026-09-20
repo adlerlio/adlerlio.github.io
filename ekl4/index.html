@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ekl4故障指示器专业指南：解析ekl4故障指示器工作原理、常见故障代码、安装维护及选型建议，提供ekl4故障指示器技术参数与解决方案。">
+    <meta name="keywords" content="ekl4故障指示器,电力故障指示器,ekl4技术参数,线路故障定位,智能故障指示器">
+    <title>ekl4故障指示器-智能线路故障检测与选型维护指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #004494;
+            --accent-color: #f0ad4e;
+            --text-main: #333333;
+            --text-light: #666666;
+            --bg-light: #f8f9fa;
+            --border-color: #e0e0e0;
+            --container-width: 1200px;
+            --spacing-unit: 1rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--text-main);
+            margin-left: 5px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-tags {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Features Grid */
+        .features {
+            padding: 4rem 0;
+            background-color: var(--bg-light);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        /* Technical Specs Table */
+        .specs {
+            padding: 4rem 0;
+        }
+
+        .specs-container {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .spec-table th, .spec-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .spec-table th {
+            background-color: var(--bg-light);
+            font-weight: 600;
+            width: 30%;
+        }
+
+        .spec-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Troubleshooting Section */
+        .troubleshooting {
+            padding: 4rem 0;
+            background-color: var(--bg-light);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .faq-item h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            color: var(--text-main);
+        }
+
+        .faq-item p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Installation Steps */
+        .steps {
+            padding: 4rem 0;
+        }
+
+        .step-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .step-item {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            position: relative;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            padding: 3rem 0;
+            margin-top: auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-wrap: wrap;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 0;
+                margin-top: 1rem;
+                padding-bottom: 1rem;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                border-bottom: 1px solid #eee;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 0.8rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary-color)"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                <span>电力监测</span>
+            </a>
+            <div class="mobile-menu-btn" onclick="toggleMenu()">☰</div>
+            <nav>
+                <ul id="nav-list">
+                    <li><a href="#features">产品优势</a></li>
+                    <li><a href="#specs">技术参数</a></li>
+                    <li><a href="#troubleshoot">故障排查</a></li>
+                    <li><a href="#install">安装指南</a></li>
+                    <li><a href="#contact">联系我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>ekl4故障指示器</h1>
+                <p>专为高压输配电线路设计，实现故障快速定位、隔离与恢复，提升供电可靠性。专业的智能故障检测解决方案。</p>
+                <div class="hero-tags">EKL4系列 · 高可靠性 · 智能监测 · 防误动设计</div>
+                <div style="margin-top: 2rem;">
+                    <a href="#specs" class="btn btn-primary">查看技术参数</a>
+                    <a href="#install" class="btn" style="background:rgba(255,255,255,0.2); color:white; margin-left:10px;">安装指南</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2 class="section-title">核心优势</h2>
+                <p class="section-subtitle">ekl4故障指示器采用先进的传感与微电子技术，满足不同场景的检测需求。</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>高灵敏度检测</h3>
+                        <p>具备极高的过流、过压及零序电流检测灵敏度，能够精准捕捉线路故障特征，避免误报。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>防雷防浪涌</h3>
+                        <p>内置高能量防雷模块，耐受强脉冲冲击，确保设备在恶劣气象条件下稳定运行。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📡</div>
+                        <h3>无线信号传输</h3>
+                        <p>支持无线通信功能，可远程传输故障信息至后台，无需二次接线，安装维护便捷。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔋</div>
+                        <h3>长寿命供电</h3>
+                        <p>采用低功耗设计，配合锂电池供电，在无光照条件下也能保证长期工作，免维护周期长。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="specs" class="specs">
+            <div class="container">
+                <h2 class="section-title">技术参数</h2>
+                <p class="section-subtitle">ekl4故障指示器主要技术指标参考</p>
+                
+                <div class="specs-container">
+                    <table class="spec-table">
+                        <tbody>
+                            <tr>
+                                <th>额定电压</th>
+                                <td>10kV, 35kV, 110kV</td>
+                            </tr>
+                            <tr>
+                                <th>额定频率</th>
+                                <td>50Hz / 60Hz</td>
+                            </tr>
+                            <tr>
+                                <th>额定电流</th>
+                                <td>10A - 6000A (根据型号)</td>
+                            </tr>
+                            <tr>
+                                <th>过流动作值</th>
+                                <td>1.2In - 2.0In (可调)</td>
+                            </tr>
+                            <tr>
+                                <th>零序动作值</th>
+                                <td>0.5In - 2.0In (可调)</td>
+                            </tr>
+                            <tr>
+                                <th>工作温度</th>
+                                <td>-40℃ ~ +85℃</td>
+                            </tr>
+                            <tr>
+                                <th>存储温度</th>
+                                <td>-50℃ ~ +85℃</td>
+                            </tr>
+                            <tr>
+                                <th>防护等级</th>
+                                <td>IP54 (户外型) / IP65</td>
+                            </tr>
+                            <tr>
+                                <th>通信方式</th>
+                                <td>433MHz / 230MHz 无线或光纤</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="troubleshoot" class="troubleshooting">
+            <div class="container">
+                <h2 class="section-title">常见故障与排查</h2>
+                <p class="section-subtitle">遇到ekl4故障指示器异常情况时的处理建议</p>
+                
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4>指示灯常亮但不动作</h4>
+                        <p>检查是否为线路负荷电流正常，但未达到设定的动作阈值。确认设定值是否与现场实际需求相符。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>误报率高</h4>
+                        <p>可能是抗干扰能力不足或安装位置受到强电磁干扰。检查屏蔽层接地是否良好，或调整安装角度。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>指示器无电或电压异常</h4>
+                        <p>检查取能线圈是否断路或接触不良，确认取能电流是否在最低启动电流以上（通常需>0.5A）。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>通信距离短</h4>
+                        <p>检查天线是否损坏或被遮挡。在复杂地形下，可能需要加装中继器或选用更高功率型号。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>电池指示灯闪烁</h4>
+                        <p>电池电量不足，建议更换锂电池。若更换后仍报警，需检查电路板是否存在漏电现象。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>指示器无法复位</h4>
+                        <p>部分型号需要通过专用的复位工具或短接端子进行复位。请参考具体型号的说明书操作。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="install" class="steps">
+            <div class="container">
+                <h2 class="section-title">安装步骤</h2>
+                <p class="section-subtitle">标准安装流程确保ekl4故障指示器正常运行</p>
+                
+                <div class="step-list">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <h3>选点安装</h3>
+                        <p>根据线路走向和分段要求，选择在分支点、电缆与架空线连接处或重要负荷侧安装。</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <h3>固定支架</h3>
+                        <p>使用专用抱箍或支架将指示器固定在杆塔或线路上，确保安装牢固，不会因风力摆动。</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <h3>接入线路</h3>
+                        <p>将指示器的取能线圈或CT（电流互感器）串联接入被测线路，确保电流方向正确。</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <h3>接地处理</h3>
+                        <p>指示器外壳及金属部件必须可靠接地，以防止雷击损坏设备并保障人员安全。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>关于产品</h4>
+                    <ul>
+                        <li><a href="#">产品中心</a></li>
+                        <li><a href="#">技术白皮书</a></li>
+                        <li><a href="#">应用案例</a></li>
+                        <li><a href="#">常见问题</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>服务支持</h4>
+                    <ul>
+                        <li><a href="#">售后政策</a></li>
+                        <li><a href="#">维修申请</a></li>
+                        <li><a href="#">技术咨询</a></li>
+                        <li><a href="#">下载中心</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li>电话：400-123-4567</li>
+                        <li>邮箱：support@power-sensor.com</li>
+                        <li>地址：科技园区创新大道88号</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>订阅资讯</h4>
+                    <p style="font-size:0.9rem; margin-bottom:10px;">获取最新的故障指示器技术动态。</p>
+                    <div style="display:flex;">
+                        <input type="email" placeholder="您的邮箱" style="padding:5px; border:none; border-radius:2px 0 0 2px; width:100%;">
+                        <button class="btn btn-primary" style="border-radius:0 2px 2px 0; padding:5px 10px;">订阅</button>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 电力监测设备技术支持中心. All Rights Reserved. 本站提供的技术信息仅供参考，具体请以产品说明书为准。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的移动端菜单切换逻辑
+        function toggleMenu() {
+            var navList = document.getElementById('nav-list');
+            if (navList.style.display === 'flex') {
+                navList.style.display = 'none';
+            } else {
+                navList.style.display = 'flex';
+            }
+        }
+
+        // 监听窗口大小变化，恢复菜单显示
+        window.addEventListener('resize', function() {
+            var navList = document.getElementById('nav-list');
+            if (window.innerWidth > 768) {
+                navList.style.display = 'flex';
+            } else {
+                navList.style.display = 'none';
+            }
+        });
+
+        // 确保页面加载时菜单状态正确
+        if (window.innerWidth <= 768) {
+            document.getElementById('nav-list').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
