@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LOL电影天堂 - 提供英雄联盟相关影视作品、角色动画短片、官方纪录片及同人创意视频的在线观看与资源导航。专注于游戏与影视文化的跨界整合。">
+    <meta name="keywords" content="LOL电影天堂,英雄联盟电影,LOL动画短片,英雄联盟纪录片,游戏改编电影">
+    <title>LOL电影天堂 - 英雄联盟影视动画与游戏改编资源导航</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-blue: #0052cc;
+            --primary-dark: #001a4d;
+            --accent-gold: #f7b500;
+            --bg-dark: #0f111a;
+            --bg-card: #1a1d29;
+            --text-main: #ffffff;
+            --text-gray: #a0a4b8;
+            --border-color: #2d3142;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: rgba(15, 17, 26, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-inner {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-gold);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-gray);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-main);
+        }
+
+        .search-bar {
+            display: flex;
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 5px 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        .search-bar input {
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            outline: none;
+            width: 200px;
+        }
+
+        .search-bar button {
+            background: none;
+            border: none;
+            color: var(--text-gray);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 450px;
+            background: linear-gradient(to bottom, rgba(15, 17, 26, 0.3), var(--bg-dark)), url('https://picsum.photos/seed/lolhero/1920/600') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: var(--container-width);
+            width: 100%;
+        }
+
+        .hero-tag {
+            background-color: var(--accent-gold);
+            color: #000;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+            border: 1px solid var(--primary-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--text-gray);
+            margin-left: 10px;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--text-main);
+        }
+
+        /* Main Layout */
+        .container {
+            max-width: var(--container-width);
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -16px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-gold);
+        }
+
+        .view-all {
+            font-size: 14px;
+            color: var(--primary-blue);
+        }
+
+        /* Grid Layout */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        /* Card Component */
+        .card {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-cover {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: #000;
+        }
+
+        .card-cover img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover .card-cover img {
+            opacity: 1;
+        }
+
+        .card-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 2px 8px;
+            font-size: 12px;
+            border-radius: 2px;
+            backdrop-filter: blur(4px);
+        }
+
+        .card-info {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+
+        .card-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Featured List Style */
+        .featured-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .featured-item {
+            display: flex;
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .featured-item:hover {
+            border-color: var(--primary-blue);
+        }
+
+        .featured-img {
+            width: 40%;
+            position: relative;
+        }
+
+        .featured-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-content {
+            width: 60%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--accent-gold);
+        }
+
+        .featured-desc {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Categories */
+        .category-section {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .category-item {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .category-item:hover {
+            border-color: var(--primary-blue);
+            background-color: rgba(0, 82, 204, 0.1);
+        }
+
+        .category-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .category-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: #15171e;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .faq-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+        }
+
+        .faq-question {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            font-size: 14px;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0b0d12;
+            padding: 50px 20px 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .footer-col p {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-bottom: 10px;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 12px;
+            color: #555;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                height: auto;
+                flex-direction: column;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .hero {
+                height: 350px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                margin: 0 auto 20px;
+            }
+
+            .btn {
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-list {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-item {
+                flex-direction: column;
+            }
+
+            .featured-img {
+                width: 100%;
+                height: 200px;
+            }
+
+            .featured-content {
+                width: 100%;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">
+                LOL<span>电影天堂</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">官方动画</a></li>
+                    <li><a href="#">角色短片</a></li>
+                    <li><a href="#">同人制作</a></li>
+                    <li><a href="#">纪录片</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="text" placeholder="搜索电影、角色或剧集...">
+                <button type="button">🔍</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <span class="hero-tag">全新上线</span>
+                <h1>英雄联盟宇宙<br>影视动画作品集</h1>
+                <p>探索符文之地背后的故事。从官方动画剧集到角色独立短片，汇聚所有高画质视听盛宴。</p>
+                <div>
+                    <a href="#" class="btn btn-primary">立即观看</a>
+                    <a href="#" class="btn btn-outline">观看预告片</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Official Animation Section -->
+            <section>
+                <div class="section-header">
+                    <h2 class="section-title">官方动画剧集</h2>
+                    <a href="#" class="view-all">查看全部 ></a>
+                </div>
+                <div class="grid-4">
+                    <article class="card">
+                        <a href="#">
+                            <div class="card-cover">
+                                <img src="https://picsum.photos/seed/lol1/400/225" alt="英雄联盟：双城之战">
+                                <span class="card-tag">HD</span>
+                            </div>
+                            <div class="card-info">
+                                <h3 class="card-title">英雄联盟：双城之战</h3>
+                                <div class="card-meta">
+                                    <span>动画</span>
+                                    <span>9.8分</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="card">
+                        <a href="#">
+                            <div class="card-cover">
+                                <img src="https://picsum.photos/seed/lol2/400/225" alt="英雄联盟：奥德赛">
+                                <span class="card-tag">4K</span>
+                            </div>
+                            <div class="card-info">
+                                <h3 class="card-title">英雄联盟：奥德赛</h3>
+                                <div class="card-meta">
+                                    <span>CG短片</span>
+                                    <span>9.5分</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="card">
+                        <a href="#">
+                            <div class="card-cover">
+                                <img src="https://picsum.photos/seed/lol3/400/225" alt="破败之王">
+                                <span class="card-tag">更新中</span>
+                            </div>
+                            <div class="card-info">
+                                <h3 class="card-title">破败之王</h3>
+                                <div class="card-meta">
+                                    <span>动画</span>
+                                    <span>9.2分</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="card">
+                        <a href="#">
+                            <div class="card-cover">
+                                <img src="https://picsum.photos/seed/lol4/400/225" alt="爱欧尼亚传说">
+                                <span class="card-tag">完结</span>
+                            </div>
+                            <div class="card-info">
+                                <h3 class="card-title">爱欧尼亚传说</h3>
+                                <div class="card-meta">
+                                    <span>动画</span>
+                                    <span>9.0分</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Featured Section -->
+            <section>
+                <div class="section-header">
+                    <h2 class="section-title">本周推荐</h2>
+                </div>
+                <div class="featured-list">
+                    <div class="featured-item">
+                        <div class="featured-img">
+                            <img src="https://picsum.photos/seed/lolfeat1/600/400" alt="双城之战第二季">
+                        </div>
+                        <div class="featured-content">
+                            <h3 class="featured-title">双城之战：第二季</h3>
+                            <p class="featured-desc">金克丝和蔚的羁绊面临前所未有的考验。杰斯与维克托的对抗升级，皮尔特沃夫与祖安的战争一触即发。更多剧情细节即将揭晓。</p>
+                            <div class="card-meta">
+                                <span>类型：动作 / 冒险 / 动画</span>
+                                <span>更新至：EP04</span>
+                            </div>
+                            <br>
+                            <a href="#" class="btn btn-primary" style="padding: 8px 20px; font-size: 14px;">观看全集</a>
+                        </div>
+                    </div>
+                    <div class="featured-item">
+                        <div class="featured-img">
+                            <img src="https://picsum.photos/seed/lolfeat2/600/400" alt="阿狸：狐狸的诱惑">
+                        </div>
+                        <div class="featured-content">
+                            <h3 class="featured-title">阿狸：狐狸的诱惑</h3>
+                            <p class="featured-desc">探索九尾妖狐阿狸的起源故事。一段关于欲望、失去与救赎的旅程，展现了她从灵体到实体，最终成为符文之地最强魅惑者的心路历程。</p>
+                            <div class="card-meta">
+                                <span>类型：剧情 / 短片</span>
+                                <span>时长：12分钟</span>
+                            </div>
+                            <br>
+                            <a href="#" class="btn btn-outline" style="padding: 8px 20px; font-size: 14px;">立即观看</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categories Section -->
+            <section>
+                <div class="section-header">
+                    <h2 class="section-title">内容分类</h2>
+                </div>
+                <div class="category-section">
+                    <div class="category-grid">
+                        <a href="#" class="category-item">
+                            <span class="category-icon">🎬</span>
+                            <span class="category-name">官方动画</span>
+                        </a>
+                        <a href="#" class="category-item">
+                            <span class="category-icon">⚔️</span>
+                            <span class="category-name">英雄短片</span>
+                        </a>
+                        <a href="#" class="category-item">
+                            <span class="category-icon">🎵</span>
+                            <span class="category-name">音乐MV</span>
+                        </a>
+                        <a href="#" class="category-item">
+                            <span class="category-icon">📚</span>
+                            <span class="category-name">同人短片</span>
+                        </a>
+                        <a href="#" class="category-item">
+                            <span class="category-icon">🎥</span>
+                            <span class="category-name">幕后花絮</span>
+                        </a>
+                        <a href="#" class="category-item">
+                            <span class="category-icon">📺</span>
+                            <span class="category-name">特别企划</span>
+                        </a>
+                        <a href="#" class="category-item">
+                            <span class="category-icon">🌍</span>
+                            <span class="category-name">世界观纪录片</span>
+                        </a>
+                        <a href="#" class="category-item">
+                            <span class="category-icon">🏆</span>
+                            <span class="category-name">电竞赛事集锦</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <div class="faq-inner">
+                    <div class="section-header" style="border-bottom: none; padding-bottom: 0;">
+                        <h2 class="section-title">常见问题</h2>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">这些电影在哪里可以观看？<span>+</span></div>
+                        <div class="faq-answer">本站收录的均为官方发布的影视作品链接，大部分支持在线播放，部分资源可能需要跳转至官方平台（如腾讯视频、Bilibili等）进行授权观看。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">画质是否清晰？<span>+</span></div>
+                        <div class="faq-answer">我们优先收录1080P及以上的高清资源。部分早期短片可能仅有720P，但我们会尽力提供最佳可用的画质版本。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">网站是否免费？<span>+</span></div>
+                        <div class="faq-answer">LOL电影天堂致力于为玩家提供便捷的影视导航服务。大部分内容为免费分享或通过合法渠道引导，请支持正版。</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <a href="#" class="logo">
+                    LOL<span>电影天堂</span>
+                </a>
+                <p style="margin-top: 15px;">
+                    专注于英雄联盟宇宙的影视资源聚合平台。为您带来最全的英雄联盟动画、CG短片与纪录片。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>快速导航</h4>
+                <ul class="footer-links">
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">最新上线</a></li>
+                    <li><a href="#">热门排行</a></li>
+                    <li><a href="#">订阅更新</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>资源分类</h4>
+                <ul class="footer-links">
+                    <li><a href="#">官方剧集</a></li>
+                    <li><a href="#">英雄故事</a></li>
+                    <li><a href="#">动画短片</a></li>
+                    <li><a href="#">幕后花絮</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>联系我们</h4>
+                <ul class="footer-links">
+                    <li><a href="#">意见反馈</a></li>
+                    <li><a href="#">版权声明</a></li>
+                    <li><a href="#">加入我们</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 LOL电影天堂 版权所有 | 本站内容仅供交流学习，不代表本站立场</p>
+        </div>
+    </footer>
+
+</body>
+</html>
