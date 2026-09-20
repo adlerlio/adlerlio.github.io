@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="zod论坛 - 专业的前端开发技术交流与资源共享社区，涵盖HTML5、CSS3、JavaScript、Web设计、前端架构及工具推荐。">
+    <meta name="keywords" content="zod论坛,前端开发,Web技术,HTML5,CSS3,JavaScript,前端社区,技术交流">
+    <title>zod论坛 - 前端开发技术交流与资源共享社区</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --secondary-color: #64748b;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .btn-outline {
+            border-color: var(--border-color);
+            background: transparent;
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: #94a3b8;
+            max-width: 700px;
+            margin: 0 auto 32px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+        }
+
+        .stat-item h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .stat-item p {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            margin: 0;
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 24px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* Grid Layouts */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 160px;
+            background-color: #e2e8f0;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            color: var(--primary-color);
+            background-color: #eff6ff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            flex: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            padding-top: 12px;
+            margin-top: auto;
+        }
+
+        .card-footer .meta {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Forum List Style */
+        .forum-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .forum-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: box-shadow 0.2s;
+        }
+
+        .forum-item:hover {
+            box-shadow: var(--shadow-sm);
+            border-color: #cbd5e1;
+        }
+
+        .forum-icon {
+            width: 48px;
+            height: 48px;
+            background-color: #f1f5f9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+
+        .forum-info {
+            flex: 1;
+        }
+
+        .forum-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .forum-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .forum-stats {
+            text-align: right;
+            min-width: 100px;
+        }
+
+        .stat-num {
+            display: block;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Latest Threads */
+        .thread-item {
+            display: flex;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .thread-item:last-child {
+            border-bottom: none;
+        }
+
+        .thread-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            flex-shrink: 0;
+        }
+
+        .thread-content {
+            flex: 1;
+        }
+
+        .thread-title {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .thread-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            gap: 12px;
+        }
+
+        /* Sidebar */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .widget {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .widget-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background-color: #f1f5f9;
+            color: var(--text-main);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+
+        .tag:hover {
+            background-color: #e2e8f0;
+            color: var(--primary-color);
+        }
+
+        .guide-list li {
+            margin-bottom: 12px;
+        }
+
+        .guide-list a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .guide-list a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e293b;
+            color: #94a3b8;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h2 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .grid-3, .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 12px 0;
+                gap: 12px;
+            }
+            .nav-links {
+                gap: 16px;
+                font-size: 0.9rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+            .forum-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .forum-stats {
+                text-align: left;
+                margin-top: 10px;
+                width: 100%;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <span>zod</span>论坛
+            </a>
+            <nav class="nav-links">
+                <a href="#" class="active">首页</a>
+                <a href="#">前端开发</a>
+                <a href="#">后端技术</a>
+                <a href="#">设计资源</a>
+                <a href="#">问答交流</a>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn btn-outline">登录</a>
+                <a href="#" class="btn btn-primary">注册</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>连接每一位开发者</h1>
+            <p>zod论坛 是专注于前端技术与Web开发的社区平台。无论你是初学者还是资深工程师，这里都有你需要的知识、工具和同行。</p>
+            <div style="display: flex; gap: 16px; justify-content: center;">
+                <a href="#" class="btn btn-primary" style="padding: 12px 24px;">浏览热门话题</a>
+                <a href="#" class="btn btn-outline" style="padding: 12px 24px; border-color: rgba(255,255,255,0.3); color: white;">发布问题</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>10k+</h3>
+                    <p>注册会员</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50k+</h3>
+                    <p>技术帖子</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24h</h3>
+                    <p>在线响应</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        
+        <!-- Forum Categories -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">板块分类</h2>
+                <a href="#" class="btn btn-outline">查看全部</a>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <img src="https://picsum.photos/seed/js/400/200" alt="JavaScript" class="card-img">
+                    <div class="card-body">
+                        <span class="card-tag">核心语言</span>
+                        <h3 class="card-title">JavaScript / TypeScript</h3>
+                        <p class="card-desc">探讨ES6+新特性、TypeScript类型系统、V8引擎原理及异步编程最佳实践。</p>
+                        <div class="card-footer">
+                            <span class="meta">1.2k 帖子</span>
+                            <span class="meta">活跃度: 高</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://picsum.photos/seed/css/400/200" alt="CSS" class="card-img">
+                    <div class="card-body">
+                        <span class="card-tag">样式与布局</span>
+                        <h3 class="card-title">CSS3 / 响应式设计</h3>
+                        <p class="card-desc">Flexbox、Grid布局、CSS动画、Sass/Less预处理器及移动端适配技巧。</p>
+                        <div class="card-footer">
+                            <span class="meta">980 帖子</span>
+                            <span class="meta">活跃度: 高</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://picsum.photos/seed/vue/400/200" alt="Vue" class="card-img">
+                    <div class="card-body">
+                        <span class="card-tag">框架生态</span>
+                        <h3 class="card-title">Vue / React / Angular</h3>
+                        <p class="card-desc">主流前端框架的实战应用、组件库开发、状态管理及性能优化方案。</p>
+                        <div class="card-footer">
+                            <span class="meta">1.5k 帖子</span>
+                            <span class="meta">活跃度: 极高</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div style="display: grid; grid-template-columns: 3fr 1fr; gap: 24px; margin-top: 40px;">
+            
+            <!-- Latest Threads -->
+            <section>
+                <div class="section-header">
+                    <h2 class="section-title">最新讨论</h2>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" placeholder="搜索帖子..." style="padding: 8px; border: 1px solid var(--border-color); border-radius: 4px; width: 200px;">
+                    </div>
+                </div>
+                
+                <div class="forum-list">
+                    <article class="thread-item">
+                        <img src="https://picsum.photos/seed/u1/50/50" alt="User" class="thread-avatar">
+                        <div class="thread-content">
+                            <a href="#" class="thread-title">请教：在复杂表格中使用虚拟滚动性能如何优化？</a>
+                            <div class="thread-meta">
+                                <span>作者: codeMaster</span>
+                                <span>•</span>
+                                <span>JavaScript</span>
+                                <span>•</span>
+                                <span>2小时前</span>
+                                <span>•</span>
+                                <span>回复 12</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="thread-item">
+                        <img src="https://picsum.photos/seed/u2/50/50" alt="User" class="thread-avatar">
+                        <div class="thread-content">
+                            <a href="#" class="thread-title">分享一套现代感极强的工作台 Dashboard UI 设计</a>
+                            <div class="thread-meta">
+                                <span>作者: designGirl</span>
+                                <span>•</span>
+                                <span>UI/UX设计</span>
+                                <span>•</span>
+                                <span>5小时前</span>
+                                <span>•</span>
+                                <span>回复 45</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="thread-item">
+                        <img src="https://picsum.photos/seed/u3/50/50" alt="User" class="thread-avatar">
+                        <div class="thread-content">
+                            <a href="#" class="thread-title">WebAssembly 在前端工程化中的应用前景</a>
+                            <div class="thread-meta">
+                                <span>作者: techGuru</span>
+                                <span>•</span>
+                                <span>WebAssembly</span>
+                                <span>•</span>
+                                <span>昨天</span>
+                                <span>•</span>
+                                <span>回复 8</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="thread-item">
+                        <img src="https://picsum.photos/seed/u4/50/50" alt="User" class="thread-avatar">
+                        <div class="thread-content">
+                            <a href="#" class="thread-title">关于 CSS Grid 和 Flexbox 混合布局的踩坑记录</a>
+                            <div class="thread-meta">
+                                <span>作者: newbieDev</span>
+                                <span>•</span>
+                                <span>CSS</span>
+                                <span>•</span>
+                                <span>昨天</span>
+                                <span>•</span>
+                                <span>回复 22</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Sidebar -->
+            <aside>
+                <div class="widget">
+                    <h3 class="widget-title">热门标签</h3>
+                    <div class="tag-cloud">
+                        <a href="#" class="tag">Vue3</a>
+                        <a href="#" class="tag">React Hooks</a>
+                        <a href="#" class="tag">TypeScript</a>
+                        <a href="#" class="tag">Node.js</a>
+                        <a href="#" class="tag">Webpack</a>
+                        <a href="#" class="tag">Vite</a>
+                        <a href="#" class="tag">Git</a>
+                        <a href="#" class="tag">CSS Grid</a>
+                        <a href="#" class="tag">面试题</a>
+                        <a href="#" class="tag">开源项目</a>
+                    </div>
+                </div>
+
+                <div class="widget">
+                    <h3 class="widget-title">新手指南</h3>
+                    <ul class="guide-list">
+                        <li><a href="#">如何正确提问？</a></li>
+                        <li><a href="#">代码格式化规范 (Prettier)</a></li>
+                        <li><a href="#">如何阅读源码？</a></li>
+                        <li><a href="#">前端职业发展路线图</a></li>
+                        <li><a href="#">推荐学习资源</a></li>
+                    </ul>
+                </div>
+
+                <div class="widget">
+                    <h3 class="widget-title">公告</h3>
+                    <div style="font-size: 0.9rem; color: var(--text-muted);">
+                        <p style="margin-bottom: 8px;">📢 <strong>论坛改版通知：</strong></p>
+                        <p style="margin-bottom: 8px;">新版 zod 论坛已于昨日上线，新增了暗黑模式支持。</p>
+                        <p style="margin-bottom: 8px;">🔒 <strong>安全提醒：</strong></p>
+                        <p>请勿在公共账号中分享个人敏感信息。</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Featured Tools -->
+        <section style="margin-top: 60px;">
+            <div class="section-header">
+                <h2 class="section-title">精选工具推荐</h2>
+            </div>
+            <div class="grid-4">
+                <div class="card" style="padding: 20px; text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">⚡</div>
+                    <h4 style="margin-bottom: 5px;">Vite</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">下一代前端构建工具</p>
+                </div>
+                <div class="card" style="padding: 20px; text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">🎨</div>
+                    <h4 style="margin-bottom: 5px;">Figma</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">协作界面设计工具</p>
+                </div>
+                <div class="card" style="padding: 20px; text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">🔍</div>
+                    <h4 style="margin-bottom: 5px;">Chrome DevTools</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">必备浏览器调试工具</p>
+                </div>
+                <div class="card" style="padding: 20px; text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">🚀</div>
+                    <h4 style="margin-bottom: 5px;">Postman</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">API 接口测试神器</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2><span style="color: var(--primary-color);">zod</span>论坛</h2>
+                    <p style="font-size: 0.9rem; line-height: 1.6; max-width: 300px;">
+                        致力于打造最纯粹的前端开发者社区。我们相信分享是技术进步的源泉，这里汇聚了无数热爱编程的同行。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">社区规则</a></li>
+                        <li><a href="#">广告合作</a></li>
+                        <li><a href="#">联系管理员</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>资源中心</h4>
+                    <ul>
+                        <li><a href="#">技术博客</a></li>
+                        <li><a href="#">开源项目</a></li>
+                        <li><a href="#">招聘信息</a></li>
+                        <li><a href="#">工具下载</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">微信公众号</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 zod论坛. All rights reserved. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+  </html>
